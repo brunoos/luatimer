@@ -1,0 +1,20 @@
+
+luaTimer is a Lua extension for time functions.
+
+This release (luaTimer-1.0) is work in progress. It has been tested on Linux only. 
+
+Small description of the files in this distribution:
+
+    ./src/timerlib.c      -- C source file
+    ./src/luatimer.c      -- Code interface Lua using the C API for Lua
+    ./src/luatimer.lua    -- Dynamic library loader script
+    ./include/timer.h     -- Header file for timerlib.c
+    ./include/luatimer.h  -- Header file for luatimer.c
+    ./test/               -- Overall luaTimer test script
+    ./obj/                -- Object files
+    ./lib/                -- Library files
+    Makefile              -- Makefile for Unix systems
+    INSTALL               -- Install instructions
+    README                -- This file
+
+See INSTALL for detailed instructions.
