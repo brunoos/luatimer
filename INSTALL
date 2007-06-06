@@ -1,12 +1,7 @@
-
-luaTimer-1.0 -- Installation
-
-luaTimer is a extension for Lua-5.0, then you need first install Lua-5.0.
+-- Instalation
 
 Building luaTimer on a Unix system:
-   1. Edit 'Makefile' and set LUA_DIR with the path for your lua-5.0 installation;
-   2. Do "make";
-   3. If you want to install luaTimer in an "official" place in your system, set INSTALL_LUATIMER in 'Makefile' with the installing path; and then do "make install". Default official place is ~/Lua-5.0/luaTimer. You may have to be root to do this.
-   4. Edit ~/luaTimer/src/luatimer.lua (the dynamic library loader script) and set the 'libname' variable with the path of the dynamic C library 'luatimer' (libluatimer.so)
-
-If "make" fails or if you have other problems with luaTimer, please let us know (silvana@inf.puc-rio.br).
+   1. Edit 'Makefile' and  set LUA_DIR with the path  for your Lua 5.1
+      installation;
+   2. Use the GNU make;
+   3. Install the lib/luatimer.so in your LUA_CPATH.

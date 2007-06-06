@@ -1,7 +1,9 @@
--- This is a simple test program for luaTimer. It inserts two timer and defines a string to be executed when the time event occurr
+-- This is a simple test program for luaTimer. 
+-- It inserts two timer and defines a string to be executed when 
+-- the time event occurr.
 
 -- load luatimer library
-require ("../src/luatimer")
+require ("luatimer")
 
 -- get time now
 io.write("time start: "..luatimer.gettime().."\n")

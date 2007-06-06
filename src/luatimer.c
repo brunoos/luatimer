@@ -1,10 +1,10 @@
 /*--
 File: luatimer.c
 Description: This file defines the interface between C time 
-             functions and Lua package 'luatimer'  
+   functions and Lua package 'luatimer'  
 Date: 2003, November
-Version: 1.0
-Comments to: silvana@inf.puc-rio.br
+Author: Silvana Rossetto, silvana at ic.uff.br
+Maintainer: Bruno Silvestre, brunoos at inf.puc-rio.br
 --*/
 
 #include <stdlib.h>
@@ -99,10 +99,11 @@ static luaL_reg functions[] = {
 };
 
 /* Create the timer table and register its functions */
-int timer_open(lua_State *L)
+int luaopen_luatimer(lua_State *L)
 {
    lua_newtable (L);
    lua_setglobal (L, "luatimer");
    luaL_openlib(L, "luatimer", functions, 0);
    return 0;
 }
+

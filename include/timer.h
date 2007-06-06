@@ -1,10 +1,10 @@
 /*--
 File: timer.h
 Description: This file contains definitions about structures 
-             and time functions to 'luatimer' package
+  and time functions to 'luatimer' package
 Date: 2003, November
-Version: 1.0
-Comments to: silvana@inf.puc-rio.br
+Author: Silvana Rossetto, silvana at ic.uff.br
+Maintainer: Bruno Silvestre, brunoos at inf.puc-rio.br
 --*/
 
 #ifndef TIMER_H

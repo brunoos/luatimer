@@ -1,27 +1,21 @@
 /*--
 File: timerlib.c
 Description: This file contains the time functions to package 'luatimer'
-Date: 2003, November
-Version: 1.0
-Comments to: silvana@inf.puc-rio.br
+Date: 2007, May
+Author: Silvana Rossetto, silvana at ic.uff.br
+Maintainer: Bruno Silvestre, brunoos at inf.puc-rio.br
 --*/
 
 #include <sys/time.h>
-#ifndef __linux__
-#include <sys/limits.h>
-#else
-#include <values.h>
-#endif /* Linux is always conformant... */
-
+#ifdef LINUX
+#include <time.h>
+#endif
+#include <float.h>
 #include <stdlib.h>
 
 #include "timer.h"
 
-#define SLEEP_MAX  60*60*24 
-
-
 /* Start the TimerCell's list */
-//static TimerList tlist = {NULL, NULL, SLEEP_MAX};
 static TimerList tlist = {NULL, NULL, DBL_MAX};
 
 
@@ -63,7 +57,7 @@ static int _remove(TimerCell* tobj) {
    if (tobj == tlist.head) {
       if (tobj == tlist.tail) {
          tlist.head = tlist.tail = NULL;
-         tlist.earliest = SLEEP_MAX;
+         tlist.earliest = DBL_MAX;
          return 1;
       }
       else {
