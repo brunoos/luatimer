@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>LuaTimer 2.0</title>
+</head>
+<body>
+<h1>LuaTimer 2.0</h1>
+<hr>
+
+<h2>Novidades</h2>
+
+<ul>
+<li>Implementa em C apenas a  função para recuperar o tempo do sistema
+com precisão de microsegundos. Todo  o restante é implementado em Lua.
+<li>Implementação para  plataformas Windows e Unix.
+<li>Cria  polls independentes de timers, o que ajuda
+no uso com co-rotinas.  </ul>
+
+<hr>
+<h2>To Do</h2>
+<p>Atualmente  o armazenamento  dos timers  dentro  de um  poll não  é
+ordenado,  o que gera  um busca  seqüencial que  pode se  tornar muito
+lenta a medida que o número de timers aumenta.</p>
+
+<hr>
+<h2>API</h2>
+
+<h3>luatimer.createpoll()</h3>
+<p>Cria um novo poll de timers.</p>
+
+<h3>poll:create(freq)</h3>
+<p>Retorna um  novo timer de freqüência freq  (em segundos), associado
+com poll.   A precisão da função  é de microsegundos,  nesse caso, use
+freqüência  com   valor  fracionado,   por  exemplo,  0.001   para  um
+milisegundo.</p>
+
+<h3>poll:cancel(t)</h3>
+<p>Cancela o timer t, removendo-o  definitivamente do poll. Se t for a
+string "all", cancela todos os timers.</p>
+
+<h3>poll:size()</h3>
+<p>Retorna o número de timers que o poll contém.</p>
+
+<h3>poll:nextshot()</h3>
+<p>Retorna quantos  segundos faltam até o próximo  timer expirar. Caso
+algum dos timers já tenha expirado, a função retorna 0 (zero).</p>
+
+<h3>poll:fired(t)</h3>
+<p>Se t  for a string  "one", a função  retorna algum timer  que tenha
+expirado.  Caso  nenhum  timer  tenha expirado,  esta  função  retorna
+nil.</p>
+<p>Se t for  a string "all", a função retorna uma  tabela com todos os
+timers que tenham expirados (use ipairs para recuperá-los).</p>
+
+<hr>
+<h2>Exemplo</h2>
+<pre>
+require("luatimer")
+
+timers = luatimer.createpoll()
+
+t3 = timers:create(3)
+t5 = timers:create(5)
+t6 = timers:create(6)
+
+print("poll size", timers:size())
+
+print("Next shot: ", timers:nextshot())
+
+-- sleep(4 segundos)
+
+t = timers:fired("one")
+print(t)
+print(t == t3)
+
+timers:cancel(t3)
+
+print(timers:nextshot())
+
+-- sleep(3 segundos)
+
+tb = timers:fired("all")
+for k, t in ipairs(tb) do
+   print(t)
+end
+
+timers:cancel("all")
+</pre>
+<hr>
+</body>
+</html>

@@ -1,13 +1,34 @@
--- LuaTimer installation
+----------
+ Building
+----------
+LuaTimer is composed by two parts:
+  * C part: to get the OS time in milliseconds.
+  * Lua part: all the rest.
 
-   1. Edit 'Makefile' and  set LUAINC with the path for your Lua 5.1 headers.
-      Under Mac OS X, also set the MACOSX_VERSION according your system.
+To build the C part you should compile the C part accord your system:
 
-   2. Use the command 'make' and the target system:
+(i) Linux, *BSD, and Mac OS X
+  1.  Go to 'unix' directory. 
+
+  2.  Edit 'Makefile' and  set LUAINC with the path for your Lua 5.1 headers.
+
+  2.1 Under Mac OS X, also set the MACOSX_VERSION according your system.
+
+  3. Use the command 'make' (or 'gmake') and the target system:
          make linux
       or
          make bsd
       or
          make macosx
  
-   3. Copy the library 'src/luatimer.so' to some place in your LUA_CPATH.
+(ii) Windows
+  1. Open the project for Visual C++ in the 'windows' directory.
+  
+  2. Set the location of Lua DLL and Lua headers in the project properties.
+
+
+-----------
+ Intalling
+-----------
+Copy the C library to some place in your LUA_CPATH, and the file 'luatimer.lua'
+from the 'lua' directory to some place in your LUA_PATH.
