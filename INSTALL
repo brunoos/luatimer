@@ -1,7 +1,13 @@
--- Instalation
+-- LuaTimer installation
 
-Building luaTimer on a Unix system:
-   1. Edit 'Makefile' and  set LUA_DIR with the path  for your Lua 5.1
-      installation;
-   2. Use the GNU make;
-   3. Install the lib/luatimer.so in your LUA_CPATH.
+   1. Edit 'Makefile' and  set LUAINC with the path for your Lua 5.1 headers.
+      Under Mac OS X, also set the MACOSX_VERSION according your system.
+
+   2. Use the command 'make' and the target system:
+         make linux
+      or
+         make bsd
+      or
+         make macosx
+ 
+   3. Copy the library 'src/luatimer.so' to some place in your LUA_CPATH.

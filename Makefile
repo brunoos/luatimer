@@ -1,53 +1,47 @@
-# LuaTimer 
-VERSION= 1.1
+# Lua 5.1 headers
+LUAINC=/home/brunoos/local/lua-5.1/include
 
-# Lua 5.1
-LUA_DIR= $(HOME)/local/lua-5.1
-LUA_INC= $(LUA_DIR)/include
+# linux bsd macosx
+PLATFORM=linux
 
-INC= ./include
-SRC= ./src
-OBJ= ./obj
-LIB= ./lib
-
-# Linux compilation
-CC= gcc
-LD= gcc
-DEFS= -DLINUX
-CFLAGS= -Wall -O2 -fpic -fomit-frame-pointer -c $(DEFS) -I$(INC) -I$(LUA_INC)
-LDFLAGS= -O -shared -fpic
-
-# *BSD compilation
-# Just comment the DEFS line in the Linux configuration above
-
-# Mac OS X compilation
-#CC= gcc
-#LD= env MACOSX_DEPLOYMENT_TARGET="10.4" gcc
-#CFLAGS= -Wall -O2 -fno-common -c -I$(INC) -I$(LUA_INC)
-#LDFLAGS= -bundle -undefined dynamic_lookup
+# For Mac OS X
+MACOSX_VERSION=10.4
 
 
-# The rest of the file should not change
+#----------------------
+# Do not edit this part
 
-SO= luatimer.so
+BSD_CFLAGS=-fomit-frame-pointer
+BSD_LDFLAGS=-O -shared -fpic
 
-# make all
-all: $(LIB)/$(SO)
+LNX_CFLAGS=-fomit-frame-pointer
+LNX_LDFLAGS=-O -shared -fpic
 
-# shared libraries (for Linux)
-$(LIB)/$(SO):  $(OBJ)/timerlib.o $(OBJ)/luatimer.o
-	$(LD) $(LDFLAGS) -o $(LIB)/$(SO) $(OBJ)/timerlib.o $(OBJ)/luatimer.o
+MAC_ENV=env MACOSX_DEPLOYMENT_TARGET=$(MACOSX_VERSION)
+MAC_CFLAGS=-fno-common
+MAC_LDFLAGS=-bundle -undefined dynamic_lookup
 
-$(OBJ)/timerlib.o: $(SRC)/timerlib.c $(INC)/timer.h
-	$(CC) $(CFLAGS) -o $@ $(SRC)/timerlib.c
+all: $(PLATFORM)
 
-$(OBJ)/luatimer.o: $(SRC)/luatimer.c $(INC)/luatimer.h
-	$(CC) $(CFLAGS) -o $@ $(SRC)/luatimer.c
+linux:
+	@echo "Build for Linux"
+	@echo "---------------"
+	@cd src ; make LUAINC=$(LUAINC) MYCFLAGS="$(LNX_CFLAGS)" MYLDFLAGS="$(LNX_LDFLAGS)"
 
-# version
-version: 
-	@echo "luaTimer-"$(VERSION) "    2007, May"
+bsd:
+	@echo "Build for *BSD"
+	@echo "--------------"
+	@cd src ; make LUAINC=$(LUAINC) MYCFLAGS="$(BSD_CFLAGS)" MYLDFLAGS="$(BSD_LDFLAGS)"
 
-# clean
+macosx:
+	@echo "Build for Mac OS X $(MACOSX_VERSION)"
+	@echo "-------------------------"
+	@cd src ; make LUAINC=$(LUAINC) ENV="$(MAC_ENV)" MYCFLAGS="$(MAC_CFLAGS)" MYLDFLAGS="$(MAC_LDFLAGS)"
+
+none:
+	@echo "Usage: make {linux | bsd | macosx}"
+
 clean:
-	rm -rf $(OBJ)/*.o  $(LIB)/*.so
+	@cd src ; make clean
+
+#----------------------
