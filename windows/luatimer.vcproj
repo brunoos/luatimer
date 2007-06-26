@@ -33,7 +33,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="lua5.1.lib"
-				OutputFile="$(OutDir)/os.dll"
+				OutputFile="$(OutDir)/luatimer.dll"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;C:\Program Files\lua-5.1\lib&quot;"
 				GenerateDebugInformation="TRUE"
@@ -82,7 +82,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="lua5.1.lib"
-				OutputFile="$(OutDir)/os.dll"
+				OutputFile="$(OutDir)/luatimer.dll"
 				Version="2.0"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="&quot;C:\Program Files\lua-5.1\lib&quot;"
