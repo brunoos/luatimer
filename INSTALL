@@ -14,18 +14,14 @@ To build the C part you should compile the C part accord your system:
 
   2.1 Under Mac OS X, also set the MACOSX_VERSION according your system.
 
-  3. Use the command 'make' (or 'gmake') and the target system:
-         make linux
-      or
-         make bsd
-      or
-         make macosx
+  3. Use the command 'make' and the target system:
+      $ make linux      , or
+      $ make bsd        , or
+      $ make macosx
  
 (ii) Windows
-  1. Open the project for Visual C++ in the 'windows' directory.
+  1. Use the project for Visual C++ in the 'windows' directory.
   
-  2. Set the location of Lua DLL and Lua headers in the project properties.
-
 
 -----------
  Intalling
