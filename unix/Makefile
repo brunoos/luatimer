@@ -1,9 +1,6 @@
 #----------------------
-# Inform the location to intall LuaTimer
-# Lua modules
-LPATH=/usr/local/lua-5.1/modules/lua
-# C modules
-CPATH=/usr/local/lua-5.1/modules/lib
+# Inform the location to intall the C module
+CPATH=/usr/local/lib/lua/5.1
 
 # Edit the line below to inform the Lua headers directory, if necessary
 #LUAINC=-I/usr/local/lua-5.1/include
@@ -17,7 +14,6 @@ MACOSX_VERSION=10.4
 
 OBJS=luatimer.o
 CMOD=luatimer.so
-LMOD=../lua/luatimer.lua
 
 BSD_CFLAGS=-O2 -fpic -fomit-frame-pointer
 BSD_LDFLAGS=-O -shared -fpic
@@ -43,7 +39,6 @@ none:
 
 install:
 	cp $(CMOD) $(CPATH)
-	cp $(LMOD) $(LPATH)
 
 linux:
 	@echo "Build for Linux"
