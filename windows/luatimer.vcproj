@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="7.10"
 	Name="luatimer"
-	ProjectGUID="{682B604C-EAA3-4BEE-9AFE-1B458949F56B}"
+	ProjectGUID="{B411C177-081F-44C3-AE7C-90BFB6949CB7}"
 	Keyword="Win32Proj">
 	<Platforms>
 		<Platform
@@ -12,18 +12,17 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="lib"
-			IntermediateDirectory="build"
+			OutputDirectory="Debug"
+			IntermediateDirectory="Debug"
 			ConfigurationType="2"
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;C:\Program Files\lua-5.1\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;LUATIMER_EXPORTS"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="4"
+				RuntimeLibrary="5"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
@@ -32,14 +31,12 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="lua5.1.lib"
 				OutputFile="$(OutDir)/luatimer.dll"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;C:\Program Files\lua-5.1\lib&quot;"
 				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile="$(IntDir)/$(ProjectName).pdb"
+				ProgramDatabaseFile="$(OutDir)/luatimer.pdb"
 				SubSystem="2"
-				ImportLibrary="$(IntDir)/luatimer.lib"
+				ImportLibrary="$(OutDir)/luatimer.lib"
 				TargetMachine="1"/>
 			<Tool
 				Name="VCMIDLTool"/>
@@ -64,8 +61,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="lib"
-			IntermediateDirectory="build"
+			OutputDirectory="Release"
+			IntermediateDirectory="Release"
 			ConfigurationType="2"
 			CharacterSet="2">
 			<Tool
@@ -83,15 +80,13 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="lua5.1.lib"
 				OutputFile="$(OutDir)/luatimer.dll"
-				Version="2.0"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="&quot;C:\Program Files\lua-5.1\lib&quot;"
 				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile="$(IntDir)/$(ProjectName).pdb"
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
-				ImportLibrary="$(IntDir)/luatimer.lib"
+				ImportLibrary="$(OutDir)/luatimer.lib"
 				TargetMachine="1"/>
 			<Tool
 				Name="VCMIDLTool"/>

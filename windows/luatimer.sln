@@ -1,5 +1,5 @@
 Microsoft Visual Studio Solution File, Format Version 8.00
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luatimer", "luatimer.vcproj", "{682B604C-EAA3-4BEE-9AFE-1B458949F56B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luatimer", "luatimer.vcproj", "{B411C177-081F-44C3-AE7C-90BFB6949CB7}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
@@ -9,10 +9,10 @@ Global
 		Release = Release
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
-		{682B604C-EAA3-4BEE-9AFE-1B458949F56B}.Debug.ActiveCfg = Debug|Win32
-		{682B604C-EAA3-4BEE-9AFE-1B458949F56B}.Debug.Build.0 = Debug|Win32
-		{682B604C-EAA3-4BEE-9AFE-1B458949F56B}.Release.ActiveCfg = Release|Win32
-		{682B604C-EAA3-4BEE-9AFE-1B458949F56B}.Release.Build.0 = Release|Win32
+		{B411C177-081F-44C3-AE7C-90BFB6949CB7}.Debug.ActiveCfg = Debug|Win32
+		{B411C177-081F-44C3-AE7C-90BFB6949CB7}.Debug.Build.0 = Debug|Win32
+		{B411C177-081F-44C3-AE7C-90BFB6949CB7}.Release.ActiveCfg = Release|Win32
+		{B411C177-081F-44C3-AE7C-90BFB6949CB7}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
