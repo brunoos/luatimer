@@ -1,5 +1,5 @@
 require("luatimer")
-require("posix")
+require("socket")
 
 timers = luatimer.createpoll()
 
@@ -9,7 +9,7 @@ t6 = timers:create(6)
 
 print(timers:nextshot())
 -- sleep(4 segundos)
-posix.sleep(4)
+socket.sleep(4)
 
 t = timers:fired("one")
 print(t)
@@ -19,7 +19,7 @@ timers:cancel(t3)
 
 print(timers:nextshot())
 -- sleep(3 segundos)
-posix.sleep(3)
+socket.sleep(3)
 
 tb = timers:fired("all")
 for k, t in ipairs(tb) do

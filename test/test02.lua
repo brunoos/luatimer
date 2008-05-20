@@ -1,5 +1,5 @@
 require("luatimer")
-require("posix")
+require("socket")
 
 local timers = luatimer.createpoll()
 
@@ -7,7 +7,7 @@ t1 = timers:create(1)
 print(t1)
 
 print(timers:fired("one"))
-posix.sleep(2)
+socket.sleep(2)
 t2 = timers:fired("one")
 print(t2)
 
