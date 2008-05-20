@@ -1,55 +1,47 @@
 <html>
 <head>
-<title>LuaTimer 2.0 Alpha</title>
+<title>LuaTimer 2.0</title>
 </head>
 <body>
-<h1>LuaTimer 2.0 Alpha</h1>
+<h1>LuaTimer 2.0</h1>
 <hr>
 
-<h2>Novidades</h2>
+<h2>Release Notes</h2>
 
 <ul>
-<li>Implementa em C apenas a  função para recuperar o tempo do sistema
-com precisão de microsegundos. Todo  o restante é implementado em Lua.
-<li>Implementação para  plataformas Windows e Unix.
-<li>Cria  polls independentes de timers, o que ajuda
-no uso com co-rotinas.  </ul>
-
-<hr>
-<h2>To Do</h2>
-<p>Atualmente  o armazenamento  dos timers  dentro  de um  poll não  é
-ordenado,  o que gera  um busca  seqüencial que  pode se  tornar muito
-lenta a medida que o número de timers aumenta.</p>
+<li>Move almost all implementation from C to Lua. The C library only
+retrieves the time in microseconds;
+<li>Add Windows platform;
+<li>Use poll of timers.
+</ul>
 
 <hr>
 <h2>API</h2>
 
 <h3>luatimer.createpoll()</h3>
-<p>Cria um novo poll de timers.</p>
+<p>Create a new poll of timers.</p>
 
 <h3>poll:create(freq)</h3>
-<p>Retorna um  novo timer de freqüência freq  (em segundos), associado
-com poll.   A precisão da função  é de microsegundos,  nesse caso, use
-freqüência  com   valor  fracionado,   por  exemplo,  0.001   para  um
-milisegundo.</p>
+<p>Create a new timer with frequence freq (in seconds). Use
+decimal numbers to precision in milli or microseconds.</p>
 
 <h3>poll:cancel(t)</h3>
-<p>Cancela o timer t, removendo-o  definitivamente do poll. Se t for a
-string "all", cancela todos os timers.</p>
+<p>Cancel the timer t, removing it from the poll. However, passing the
+string "all" to this function, all the timers in the poll are cancelled.
+</p>
 
 <h3>poll:size()</h3>
-<p>Retorna o número de timers que o poll contém.</p>
+<p>Return the number of timers in the poll.</p>
 
 <h3>poll:nextshot()</h3>
-<p>Retorna quantos  segundos faltam até o próximo  timer expirar. Caso
-algum dos timers já tenha expirado, a função retorna 0 (zero).</p>
+<p>Return the remain among of time to the next timer expires. If some timer
+is already expired, the function returns 0 (zero).</p>
 
 <h3>poll:fired(t)</h3>
-<p>Se t  for a string  "one", a função  retorna algum timer  que tenha
-expirado.  Caso  nenhum  timer  tenha expirado,  esta  função  retorna
-nil.</p>
-<p>Se t for  a string "all", a função retorna uma  tabela com todos os
-timers que tenham expirados (use ipairs para recuperá-los).</p>
+<p>Return the timers that were expired. If t is the string "all", the
+function returns a table with all the expired timers. If t is a string
+"one", the function returns one of the expired timers. In the case that
+there is no expired times, fired() returns nil.</p>
 
 <hr>
 <h2>Exemplo</h2>
