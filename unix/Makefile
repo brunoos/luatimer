@@ -15,10 +15,10 @@ MACOSX_VERSION=10.4
 OBJS=luatimer.o
 CMOD=luatimer.so
 
-BSD_CFLAGS=-O2 -fpic -fomit-frame-pointer
+BSD_CFLAGS=-O2 -fpic
 BSD_LDFLAGS=-O -shared -fpic
 
-LNX_CFLAGS=-O2 -fpic -fomit-frame-pointer
+LNX_CFLAGS=-O2 -fpic
 LNX_LDFLAGS=-O -shared -fpic
 
 MAC_ENV=env MACOSX_DEPLOYMENT_TARGET=$(MACOSX_VERSION)
@@ -35,7 +35,10 @@ LDFLAGS=$(MYLDFLAGS)
 all: none
 
 none:
-	@echo "Usage: make { linux | bsd | macosx }"
+	@echo "Usage: make <platform>"
+	@echo "  * linux"
+	@echo "  * bsd"
+	@echo "  * macosx"
 
 install:
 	cp $(CMOD) $(CPATH)
@@ -46,8 +49,8 @@ linux:
 	@make $(CMOD) MYCFLAGS="$(LNX_CFLAGS)" LDFLAGS="$(LNX_LDFLAGS)"
 
 bsd:
-	@echo "Build for *BSD"
-	@echo "--------------"
+	@echo "Build for BSD"
+	@echo "-------------"
 	@make $(CMOD) MYCFLAGS="$(BSD_CFLAGS)" LDFLAGS="$(BSD_LDFLAGS)"
 
 macosx:

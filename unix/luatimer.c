@@ -23,7 +23,8 @@ static int lt_time(lua_State *L)
 }
 
 static luaL_Reg funcs[] = {
-  {"time", lt_time}
+  {"time", lt_time},
+  {NULL,   NULL}
 };
 
 int luaopen_luatimer_os(lua_State *L)
